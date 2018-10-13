@@ -1,8 +1,23 @@
 const Main = r =>
   require.ensure([], () => r(require("@/components/main")), "tpl");
 
+// 首页
 const home = r =>
-  require.ensure([], () => r(require("@/views/Home")), "queryPcApp");
+  require.ensure([], () => r(require("@/views/home/index")), "home");
+
+// 询盘列表
+const enquiry = r =>
+  require.ensure([], () => r(require("@/views/enquiry/index")), "enquiry");
+// 询盘列表
+const enquiry_info = r =>
+  require.ensure([], () => r(require("@/views/enquiry/info")), "enquiry");
+
+// 询盘列表
+const log = r =>
+  require.ensure([], () => r(require("@/views/log/index")), "log");
+// 询盘列表
+const log_info = r =>
+  require.ensure([], () => r(require("@/views/log/info")), "log");
 
 /**
  * 项目中meta除了原生参数外可配置的参数:
@@ -25,10 +40,54 @@ export default [
       {
         path: "/home",
         name: "home",
+        component: home,
         meta: {
           title: "首页"
-        },
-        component: home
+        }
+      }
+    ]
+  },
+  {
+    path: "/enquiry",
+    component: Main,
+    children: [
+      {
+        path: "index",
+        name: "enquiry",
+        component: enquiry,
+        meta: {
+          title: "询盘列表"
+        }
+      },
+      {
+        path: "info",
+        name: "enquiry_info",
+        component: enquiry_info,
+        meta: {
+          title: "询盘详情"
+        }
+      }
+    ]
+  },
+  {
+    path: "/log",
+    component: Main,
+    children: [
+      {
+        path: "index",
+        name: "log",
+        component: log,
+        meta: {
+          title: "消息列表"
+        }
+      },
+      {
+        path: "info",
+        name: "log_info",
+        component: log_info,
+        meta: {
+          title: "消息详情"
+        }
       }
     ]
   }

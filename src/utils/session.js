@@ -16,7 +16,7 @@ util.removeItem = key => {
 };
 
 // 从sessionStorage删除所有保存的数据
-util.clear = key => {
+util.clear = () => {
   sessionStorage.clear();
 };
 
