@@ -13,6 +13,12 @@ export default {
   name: "home",
   components: {
     HelloWorld
+  },
+  // eslint-disable-next-line
+  mounted () {
+    this.$get("designerworksresplist/get?pageNumber=1&pageSize=6").then(res => {
+      console.log(res);
+    });
   }
 };
 </script>
